@@ -1,0 +1,8 @@
+version: '3.5'
+services:
+  backend:
+    container_name: imdb-reviewer-ai
+    image: "nmluci/imdb-reviewer"
+    build: . 
+    ports:
+      - "3920:8501"
