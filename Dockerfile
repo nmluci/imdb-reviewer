@@ -1,4 +1,7 @@
 FROM tensorflow/tensorflow:2.12.0
+LABEL maintainer="Lynne Fuyuna"
+LABEL build_date="2023-06-18"
+LABEL description="sentichan. an ai model for emotional sentiment analysis"
 
 WORKDIR /app
 
@@ -15,7 +18,5 @@ RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r requirements.txt
 
 EXPOSE 8501
-
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
