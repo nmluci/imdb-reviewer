@@ -1,8 +1,14 @@
 version: '3.5'
 services:
   backend:
-    container_name: imdb-reviewer-ai
+    container_name: imdb-reviewer-ai:v1.0.0
     image: "nmluci/imdb-reviewer"
     build: . 
     ports:
       - "3920:8501"
+    healthcheck:
+      test: curl --fail http://localhost:8501/_stcore/health
+      interval: 60s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
